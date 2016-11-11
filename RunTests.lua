@@ -22,6 +22,7 @@ local tests = {
 	"AES256CipherTests",
 	"TEACipherTests",
 	"XTEACipherTests",
+	"SALSA20Tests",
 	};
 
 local status = 0
