@@ -343,4 +343,21 @@ data = {
 
 pass = pass and test_tuple("expand + hash", salsa20.hash, 64, 1, data)
 
+local function binto(fmt, b)
+	fmt=fmt or "%x"
+	local r=""
+	for i=1,#b do
+		r=r..fmt:format(string.byte(b:sub(i,i)))
+	end
+	return r
+end
+
+local encrypted = salsa20.encrypt("1234567890ABCDEF", "12345678", "abcdef ba=984tuy92f2", 20)
+--local encrypted = salsa20.encrypt("1234567890ABCDEF", "12345678", "fd7d3ee5c2b1c5a2d984c0fd8d5bbf71ac39325", 20)
+local encrypted = salsa20.encrypt("1234567890ABCDEF", "12345678", [[ý}>åÂ±Å¢ÙÀý[¿q¬9%]], 20)
+print(encrypted)
+--print( binto("%x", encrypted ) )
+--assert(#encrypted==12)
+--print(            salsa20.decrypt("1234567890ABCDEF", "12345678", (encrypted), 20) )
+
 --os.exit(pass and 0 or 1)
